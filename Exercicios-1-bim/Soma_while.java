@@ -4,9 +4,7 @@ public class Soma_while {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        int a,b,soma;
-
-        soma = 0;
+        int a,b,soma = 0;
 
         System.out.println("Digite o 1 numero");
         a = entrada.nextInt();
