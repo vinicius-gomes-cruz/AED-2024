@@ -9,7 +9,7 @@ public class Fatorial {
         
         i = n;
         while (i > 0) {
-            valor = valor * i;
+            valor *= i;
             i--;
         }
         entrada.close();
