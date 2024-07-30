@@ -5,16 +5,13 @@ public class Primo {
 
     public static void primo(int n){
         int primo = 0;
-        for (int i = 1; i <= n; i++) {
+        for (int i = 2; i < n; i++) {
             if (n % i == 0) {
-                primo += i;
+                System.out.println("O numero não é primo");
+                return;
             }
         }
 
-        if (primo == n+1) {
-            System.out.println("O numero é primo");
-        } else {
-            System.out.println("O numero não é primo");
-        }
+        System.out.println("O numero é primo");
     }
 }
