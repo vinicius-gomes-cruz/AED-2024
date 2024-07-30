@@ -1,18 +1,28 @@
-import java.util.Scanner;
 
 public class Fatorial {
 
     public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
+        fatorialfor(5);
+    }
 
-        int i,valor = 1,n = entrada.nextInt();
+    public static void fatorial(int n){
+        int i,valor = 1;
         
         i = n;
         while (i > 0) {
             valor *= i;
             i--;
         }
-        entrada.close();
+
+        System.out.println("Fatorial de " + n + " e igual a " + valor);
+    }
+
+    public static void fatorialfor(int n){
+        int valor = 1;
+
+        for (int i = n; i > 0; i--) {
+            valor *= i;
+        }
 
         System.out.println("Fatorial de " + n + " e igual a " + valor);
     }
