@@ -1,6 +1,6 @@
 public class Piramide {
     public static void main(String[] args) {
-        piramide(7);
+        piramidefor(7);
     }
 
     public static void piramide(int n){
@@ -17,6 +17,18 @@ public class Piramide {
                 i++;
             }
             j++;
+        }
+    }
+
+    public static void piramidefor(int n){
+        for (int j = 1; j <= n; j++) {
+            for (int i = 1; i <= j; i++) {
+                if (i == j) {
+                    System.out.print("\n");
+                    continue;
+                }
+                System.out.print(i + " ");
+            }
         }
     }
 }
