@@ -26,4 +26,12 @@ public class Fatorial {
 
         System.out.println("Fatorial de " + n + " e igual a " + valor);
     }
+
+    public static int fatorialRecursivo(int n){
+        if (n == 0) {
+            return 1;
+        }
+
+        return n * fatorialRecursivo(n-1);
+    }
 }
