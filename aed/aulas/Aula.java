@@ -6,10 +6,8 @@ import libs.Exercicios;
 public class Aula {
     public static void aula(){
         Entrada.abrir();
-        int n = Entrada.lerInt();
-        System.out.println(Exercicios.fibonacci(n));
+        System.out.println(Exercicios.fibonacci(4));
         Entrada.fechar();
     }
-
     
 }
