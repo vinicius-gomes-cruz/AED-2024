@@ -2,7 +2,7 @@
 
 Repositorio para armazenar os arquibos desenvolvidos nas aulas
 
-Professor: Darlon Vasta  
+Professor: Darlon Vasata  
 Instituição: IFPR - Capaus Cascavel  
 Curso: Teconologia em Analise E Desenvolvimento de Sistemas  
 1° Ano
