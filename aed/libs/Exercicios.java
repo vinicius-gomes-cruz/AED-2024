@@ -305,4 +305,30 @@ public class Exercicios {
             return "Esse triangulo não pode existir";
         }
     }
+
+    public static String convertePosicaoParaMaiscula(String entrada, int pos){
+        return entrada.substring(0, pos) + entrada.substring(pos, pos+1).toUpperCase() + entrada.substring(pos + 1);
+    }
+
+    public static int obterPosicaoProxChar(String entrada, int pos, char c){
+        int index = -1;
+
+        for (int i = pos; i < entrada.length(); i++) {
+            if (entrada.charAt(i) == c) {
+                return i;
+            }
+        }
+
+        return index;
+    }
+
+    public static String removerCaracterDaSentenca(String entrada, char c){
+        String resp = "";
+        for (int i = 0; i < entrada.length(); i++) {
+            if (entrada.charAt(i) != c) {
+                resp += entrada.charAt(i);
+            }
+        }
+        return resp;
+    }
 }
