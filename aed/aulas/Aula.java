@@ -6,7 +6,7 @@ import libs.Exercicios;
 public class Aula {
     public static void aula(){
         Entrada.abrir();
-        Exercicios.vetores1();
+        Exercicios.vetores2();
         Entrada.fechar();
     }
     

@@ -1,14 +1,16 @@
 package libs;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exercicios {
-    public static int menor(int n1, int n2){
+    public static int menor(int n1, int n2) {
         if (n1 < n2) {
             return n1;
         }
         return n2;
     }
-    
+
     public static void exMenorNumero() {
         int a, b, menor;
         Entrada.abrir();
@@ -21,7 +23,7 @@ public class Exercicios {
         System.out.println("O menor valor é " + menor);
     }
 
-    public static void exLerInteiro(){
+    public static void exLerInteiro() {
         Entrada.abrir();
 
         int x = Entrada.lerInt("Digite um numero");
@@ -30,14 +32,14 @@ public class Exercicios {
         Entrada.fechar();
     }
 
-    public static void automovel(String marca,float kmIni,float kmFin,float litrosCon,float capacidade ) {
+    public static void automovel(String marca, float kmIni, float kmFin, float litrosCon, float capacidade) {
         float kmLitro = (kmFin - kmIni) / litrosCon;
         float autonomia = capacidade * kmLitro;
         System.out.println("O veiculo da " + marca + " percorreu " + kmLitro + " km/litro");
         System.out.println("O veiculo da " + marca + " possui uma autonomia de " + autonomia + " km/tanque");
     }
 
-    public static void bolinhaDeNatal(){
+    public static void bolinhaDeNatal() {
         Scanner scanner = new Scanner(System.in);
 
         int B = scanner.nextInt();
@@ -47,7 +49,7 @@ public class Exercicios {
 
         if (falta > 0) {
             System.out.println("Faltam" + falta + "bolinha(s)");
-        }else {
+        } else {
             System.out.println("Amelia tem todas as bolinhas");
         }
         scanner.close();
@@ -67,7 +69,7 @@ public class Exercicios {
     }
 
     public static void divisores() {
-        int n,i = 1;
+        int n, i = 1;
         Scanner entrada = new Scanner(System.in);
 
         n = entrada.nextInt();
@@ -115,30 +117,30 @@ public class Exercicios {
         return imc;
     }
 
-    public static int fatorial(int n){
+    public static int fatorial(int n) {
         if (n == 0) {
             return 1;
         }
 
-        return n * fatorial(n-1);
+        return n * fatorial(n - 1);
     }
 
     public static int fibonacci(int n) {
-        if (n == 1 || n == 2){
+        if (n == 1 || n == 2) {
             return 1;
         }
 
-        return fibonacci(n-1) + fibonacci(n-2);
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     public static float macas(float macas) {
         if (macas < 12)
-            return  macas * 0.30f;
+            return macas * 0.30f;
         return macas * 0.25f;
-        
+
     }
 
-    public static void maiorMenor(){
+    public static void maiorMenor() {
         Scanner entrada = new Scanner(System.in);
 
         int num1 = entrada.nextInt();
@@ -148,14 +150,14 @@ public class Exercicios {
         int menor = 0;
 
         if (num1 > num2 && num1 > num3) {
-             maior = num1;
+            maior = num1;
             if (num2 < num3) {
                 menor = num2;
             } else {
                 menor = num3;
             }
         } else if (num2 > num1 && num2 > num3) {
-             maior = num2;
+            maior = num2;
             if (num1 < num3) {
                 menor = num1;
             } else {
@@ -174,22 +176,22 @@ public class Exercicios {
         entrada.close();
     }
 
-    public static int mdc(int n1, int n2){
+    public static int mdc(int n1, int n2) {
         int i = Math.min(n1, n2);
         while (!(n1 % i == 0 && n2 % i == 0)) {
             i--;
         }
-        return  i;
+        return i;
     }
 
-    public static int mmc(int n1, int n2, int i){
+    public static int mmc(int n1, int n2, int i) {
         if (i % n1 + i % n2 == 0) {
             return i;
         }
-        return mmc(n1, n2, i+1);
+        return mmc(n1, n2, i + 1);
     }
 
-    public static void multiplos(){
+    public static void multiplos() {
         Scanner entrada = new Scanner(System.in);
 
         int n1 = entrada.nextInt();
@@ -197,13 +199,13 @@ public class Exercicios {
 
         if (n1 % n2 == 0) {
             System.out.println("Sao Multiplos");
-        }else{
+        } else {
             System.out.println("Nao sao Multiplos");
         }
         entrada.close();
     }
 
-    public static void nadador(int idade){
+    public static void nadador(int idade) {
         if (idade >= 18) {
             System.out.println("");
         }
@@ -224,7 +226,7 @@ public class Exercicios {
 
     }
 
-    public static void par_impar_while1(){
+    public static void par_impar_while1() {
         Scanner entrada = new Scanner(System.in);
 
         int i, valor, qtd_pares, qtd_impares;
@@ -237,14 +239,14 @@ public class Exercicios {
             System.out.println("Digite o " + i + " numero");
             valor = entrada.nextInt();
             if (valor % 2 == 0) {
-              
+
                 qtd_pares += 1;
             } else {
                 qtd_impares += 1;
             }
             i += 1;
         }
-        
+
         entrada.close();
 
         System.out.println("impares: " + qtd_impares);
@@ -252,7 +254,7 @@ public class Exercicios {
 
     }
 
-    public static void piramide(int n){
+    public static void piramide(int n) {
         for (int j = 1; j <= n; j++) {
             for (int i = 1; i <= j; i++) {
                 if (i == j) {
@@ -264,7 +266,7 @@ public class Exercicios {
         }
     }
 
-    public static void primo(int n){
+    public static void primo(int n) {
         for (int i = 2; i < n; i++) {
             if (n % i == 0) {
                 System.out.println("O numero não é primo");
@@ -274,11 +276,11 @@ public class Exercicios {
 
         System.out.println("O numero é primo");
     }
-    
-    public static void soma_while(){
+
+    public static void soma_while() {
         Scanner entrada = new Scanner(System.in);
 
-        int i,a,b,soma = 0;
+        int i, a, b, soma = 0;
 
         System.out.println("Digite o 1 numero");
         a = entrada.nextInt();
@@ -294,22 +296,22 @@ public class Exercicios {
 
         entrada.close();
 
-        System.out.println("A soma dos valores de " + a + " a " +  b + " é " + soma);
+        System.out.println("A soma dos valores de " + a + " a " + b + " é " + soma);
     }
 
-    public static String triangulo(int ladoA, int ladoB, int ladoC){
+    public static String triangulo(int ladoA, int ladoB, int ladoC) {
         if (ladoA + ladoB > ladoC && ladoB + ladoC > ladoA && ladoA + ladoC > ladoB) {
             return "Esse triangulo pode existir";
-        }else {
+        } else {
             return "Esse triangulo não pode existir";
         }
     }
 
-    public static String convertePosicaoParaMaiscula(String entrada, int pos){
-        return entrada.substring(0, pos) + entrada.substring(pos, pos+1).toUpperCase() + entrada.substring(pos + 1);
+    public static String convertePosicaoParaMaiscula(String entrada, int pos) {
+        return entrada.substring(0, pos) + entrada.substring(pos, pos + 1).toUpperCase() + entrada.substring(pos + 1);
     }
 
-    public static int obterPosicaoProxChar(String entrada, int pos, char c){
+    public static int obterPosicaoProxChar(String entrada, int pos, char c) {
         int index = -1;
 
         for (int i = pos; i < entrada.length(); i++) {
@@ -321,7 +323,7 @@ public class Exercicios {
         return index;
     }
 
-    public static String removerCaracterDaSentenca(String entrada, char c){
+    public static String removerCaracterDaSentenca(String entrada, char c) {
         String resp = "";
         for (int i = 0; i < entrada.length(); i++) {
             if (entrada.charAt(i) != c) {
@@ -354,7 +356,36 @@ public class Exercicios {
 
         System.out.println(maiores);
 
-        
+        entrada.close();
+    }
+
+    public static void vetores2() {
+        int[] va = new int[10];
+        int[] vb = new int[10];
+        int[] vc = new int[10];
+        int j = 0;
+        Scanner entrada = new Scanner(System.in);
+        for (int i = 0; i < 20; i++) {
+            if (i < 10) {
+                va[i] = entrada.nextInt();
+            } else {
+                vb[j] = entrada.nextInt();
+                j++;
+            }
+        }
+
+        for (int i = 0; i < vc.length; i++) {
+            if (i % 2 == 0) {
+                vc[i] = va[i] + vb[i];
+            } else {
+                vc[i] = va[i] - vb[i];
+            }
+        }
+
+        System.out.println(Arrays.toString(va));
+        System.out.println(Arrays.toString(vb));
+        System.out.println(Arrays.toString(vc));
+
         entrada.close();
     }
 }
