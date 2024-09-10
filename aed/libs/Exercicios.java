@@ -1,5 +1,4 @@
 package libs;
-
 import java.util.Scanner;
 
 public class Exercicios {
@@ -330,5 +329,32 @@ public class Exercicios {
             }
         }
         return resp;
+    }
+
+    public static void vetores1() {
+        int numero;
+        int media = 0;
+        int maiores = 0;
+        int[] vetor = new int[8];
+        Scanner entrada = new Scanner(System.in);
+
+        for (int i = 0; i < vetor.length; i++) {
+            numero = entrada.nextInt();
+            vetor[i] = numero;
+            media += vetor[i];
+        }
+
+        media = media / 8;
+
+        for (int i = 0; i < vetor.length; i++) {
+            if (vetor[i] > media) {
+                maiores += 1;
+            }
+        }
+
+        System.out.println(maiores);
+
+        
+        entrada.close();
     }
 }
