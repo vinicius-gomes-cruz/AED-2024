@@ -550,4 +550,53 @@ public class Exercicios {
 
         System.out.println(Arrays.toString(vetor));
     }
+
+    public static void vetores9() {
+        Scanner entrada = new Scanner(System.in);
+        int[] A = new int[10];
+        int[] B = new int[10];
+        int[] C = new int[10];
+
+        for (int i = 0; i < A.length; i++) {
+            A[i] = entrada.nextInt();
+        }
+        for (int i = 0; i < B.length; i++) {
+            B[i] = entrada.nextInt();
+        }
+
+        for (int i = 0; i < C.length; i++) {
+            C[i] = A[i] - B[i];
+        }
+        entrada.close();
+
+        System.out.println(Arrays.toString(C));
+    }
+
+    public static void vetores10() {
+        Entrada.abrir();
+
+        double[] x = new double[5];
+        double[] y = new double[5];
+        double soma = 0;
+
+        for (int i = 0; i < y.length; i++) {
+            x[i] = Entrada.lerDouble();
+        }
+        for (int i = 0; i < y.length; i++) {
+            y[i] = Entrada.lerDouble();
+        }
+
+        for (int i = 0; i < y.length; i++) {
+            x[i] = x[i] * y[i];
+        }
+        for (int i = 0; i < y.length; i++) {
+            soma += x[i];
+        }
+
+        System.out.println(soma);
+
+        Entrada.fechar();
+    }
+
+
 }
