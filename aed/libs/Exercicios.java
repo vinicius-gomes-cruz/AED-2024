@@ -388,4 +388,166 @@ public class Exercicios {
 
         entrada.close();
     }
+
+    public static void vetores3() {
+        Scanner entrada = new Scanner(System.in);
+        int[] c = new int[10];
+
+        for (int i = 0; i < c.length; i++) {
+            c[i] = entrada.nextInt();
+        }
+        entrada.close();
+
+        System.out.println(Arrays.toString(c));
+
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] < 0) {
+                c[i] = 0;
+            }
+        }
+
+        System.out.println(Arrays.toString(c));
+    }
+
+    public static void vetores4() {
+        Scanner entrada = new Scanner(System.in);
+        int[] c = new int[6];
+        int maior = 0;
+        int menor = 0;
+        int numDigitado = 0;
+        int numDigitados = 0;
+
+        for (int i = 0; i < c.length; i++) {
+            c[i] = entrada.nextInt();
+            if (c[i] == numDigitado) {
+                numDigitados += 1;
+            }
+            if (i == 0) {
+                menor = c[i];
+                numDigitado = c[i];
+                numDigitados += 1;
+            }
+            if (c[i] > maior) {
+                maior = c[i];
+            }
+            if (c[i] < menor) {
+                menor = c[i];
+            }
+
+        }   
+        
+        System.out.println(maior);
+        System.out.println(menor);
+        System.out.println(numDigitados);
+
+
+        entrada.close();
+    }
+
+    public static void vetores5() {
+        Scanner entrada = new Scanner(System.in);
+        int[] va = new int[10];
+        int[] vb = new int[10];
+        int j = 0;
+
+        for (int i = 0; i < va.length; i++) {
+            va[i] = entrada.nextInt();
+        }
+
+        for (int i = 0; i < va.length; i++) {
+            if (va[i] % 2 == 0) {
+                vb[j] = va[i];
+                j++;
+            }
+        }
+        for (int i = 0; i < vb.length; i++) {
+            if (va[i] % 2 == 1) {
+                vb[j] = va[i];
+                j++;
+            }
+        }
+        entrada.close();
+
+        System.out.println(Arrays.toString(vb));
+    }
+
+    public static void vetores6() {
+        Scanner entrada = new Scanner(System.in);
+
+        int[] valores = new int[10];
+        int numero;
+        int j = valores.length;
+        int p = 0;
+
+        while (p-1 != j-1){
+            numero = entrada.nextInt();
+            if (numero % 2 == 0) {
+                valores[p] = numero;
+                p++;
+            }
+            if (numero % 2 == 1) {
+                valores[j-1] = numero;
+                j--;
+            }
+        }
+
+        System.out.println(Arrays.toString(valores));
+
+        entrada.close();
+    }
+
+    public static void vetores7() {
+        Scanner entrada = new Scanner(System.in);
+        int n = entrada.nextInt();
+        int[] valores = new int[n];
+        int numpares = 0;
+        int numimpares = 0;
+        int numero = 0;
+        int j = 0;
+        int l = 0;
+
+        for (int i = 0; i < n; i++) {
+            numero = entrada.nextInt();
+            valores[i] = numero;
+            if (numero % 2 == 0) {
+                numpares += 1;
+            }
+            if (numero % 2 == 1) {
+                numimpares += 1;
+            }
+        }
+        int[] pares = new int[numpares];
+        int[] impares = new int[numimpares];
+
+        for (int i = 0; i < valores.length; i++) {
+            if (valores[i] % 2 == 0) {
+                pares[j] = valores[i];
+                j++;
+            }
+            if (valores[i] % 2 == 1) {
+                impares[l] = valores[i];
+                l++;
+            }
+        }
+        entrada.close();
+
+        System.out.println("Par: " + numpares);
+        System.out.println(Arrays.toString(pares));
+        System.out.println("Impar: " + numimpares);
+        System.out.println(Arrays.toString(impares));
+    }
+
+    public static void vetores8() {
+        Scanner entrada = new Scanner(System.in);
+        int n = entrada.nextInt();
+        int k = entrada.nextInt();
+        int[] vetor = new int[n];
+        entrada.close();
+
+        for (int i = 0; i < vetor.length; i++) {
+            vetor[i] = i % k;
+        }
+
+        System.out.println(Arrays.toString(vetor));
+    }
 }
