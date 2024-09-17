@@ -598,5 +598,21 @@ public class Exercicios {
         Entrada.fechar();
     }
 
+    public static void vetores11() {
+        double maior_altura = 0;
+        double menor_altura = 0;
+        double[] alunos = new double[10];
+        for (int i = 1; i < alunos.length; i+=2) {
+            if (alunos[i] > maior_altura) {
+                maior_altura = alunos[i];
+            }
+            if (alunos[i] < menor_altura) {
+                menor_altura = alunos[i];
+            }
+        }
+        for (int i = 0; i < alunos.length; i+=2) {
+        }
+    }
+
 
 }
