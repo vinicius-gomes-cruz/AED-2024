@@ -68,6 +68,82 @@ public class Vetores {
         String[] vetor = new String[v.length];
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = v[i];
+        }   
+        return vetor;
+    }
+
+    public static int[] copiarTrechoVetor(int[] v, int a, int b){
+        if (a > b) {
+            return new int[0];
+        }
+        if (a > v.length && b > v.length) {
+            return new int[0];
+        }
+
+        if (a < 0) {
+            a = 0;
+        }
+        if (b > v.length) {
+            b = v.length;
+        }
+        int[] vetor = new int[b - a];
+        int l = 0;
+        for (int i = a; i < b; i++) {
+            if (i == v.length) {
+                return vetor;
+            }
+            vetor[l] = v[i];
+            l++;
+        }
+        return vetor;
+    }
+    public static double[] copiarTrechoVetor(double[] v, int a, int b){
+        if (a > b) {
+            return new double[0];
+        }
+        if (a > v.length && b > v.length) {
+            return new double[0];
+        }
+
+        if (a < 0) {
+            a = 0;
+        }
+        if (b > v.length) {
+            b = v.length;
+        }
+        double[] vetor = new double[b - a];
+        int l = 0;
+        for (int i = a; i < b; i++) {
+            if (i == v.length) {
+                return vetor;
+            }
+            vetor[l] = v[i];
+            l++;
+        }
+        return vetor;
+    }
+    public static boolean[] copiarTrechoVetor(boolean[] v, int a, int b){
+        if (a > b) {
+            return new boolean[0];
+        }
+        if (a > v.length && b > v.length) {
+            return new boolean[0];
+        }
+
+        if (a < 0) {
+            a = 0;
+        }
+        if (b > v.length) {
+            b = v.length;
+        }
+        boolean[] vetor = new boolean[b - a];
+        int l = 0;
+        for (int i = a; i < b; i++) {
+            if (i == v.length) {
+                return vetor;
+            }
+            vetor[l] = v[i];
+            l++;
         }
         return vetor;
     }
