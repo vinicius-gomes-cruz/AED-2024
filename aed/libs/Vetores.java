@@ -358,4 +358,41 @@ public class Vetores {
         return retorno;
     }
 
+    public static int[] removerRepeticao(int[] vetor) {
+        int valor = 0;
+        int num = 0;
+        int qtdnum = 0;
+        int l = 0;
+
+        for (int i = 0; i < vetor.length; i++) {
+            valor = vetor[i];
+            for (int j = i; j < vetor.length; j++) {
+                if (vetor[j] == valor) {
+                    num++;
+                }
+            }
+            if (num == 1) {
+                qtdnum += 1;
+            } 
+            num = 0;
+        }
+
+        int[] v = new int[qtdnum];
+
+        for (int i = 0; i < vetor.length; i++) {
+            boolean numex = false;
+            valor = vetor[i];
+            for (int j = 0; j < v.length; j++) {
+                if (vetor[i] == v[j]) {
+                    numex = true;
+                }
+            }
+            if (numex == false) {
+                v[l] = vetor[i];
+                l++;
+            }
+        }
+
+        return v;
+    }
 }
