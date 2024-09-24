@@ -49,4 +49,8 @@ public class Entrada {
         System.out.println(msg);
         return entrada.nextLine();
     }
+
+    public static char lerCaracteres() {
+        return entrada.nextLine().charAt(0);
+    }
 }

@@ -148,4 +148,44 @@ public class Vetores {
         return vetor;
     }
 
+    public static int[] lerInteiros(int n) {
+        Entrada.abrir();
+        int[] vetor = new int[n];
+        for (int i = 0; i < n; i++) {
+            vetor[i] = Entrada.lerInt();
+        }
+        Entrada.fechar();
+        return vetor;
+    }
+
+    public static double[] lerReais(int n) {
+        Entrada.abrir();
+        double[] vetor = new double[n];
+        for (int i = 0; i < n; i++) {
+            vetor[i] = Entrada.lerDouble();
+        }
+        Entrada.fechar();
+        return vetor;
+    }
+
+    public static char[] lerCaracteres(int n) {
+        Entrada.abrir();
+        char[] vetor = new char[n];
+        for (int i = 0; i < n; i++) {
+            vetor[i] = Entrada.lerCaracteres();
+        }
+        Entrada.fechar();
+        return vetor;
+    }
+
+    public static String[] lerString(int n) {
+        Entrada.abrir();
+        String[] vetor = new String[n];
+        for (int i = 0; i < n; i++) {
+            vetor[i] = Entrada.lerPalavra();
+        }
+        Entrada.fechar();
+        return vetor;
+    }
+
 }

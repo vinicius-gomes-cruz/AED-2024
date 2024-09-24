@@ -9,8 +9,7 @@ import libs.Vetores;
 public class Aula {
     public static void aula(){
         Entrada.abrir();
-        int[] v = {10,20,30,40,50};
-        System.out.println(Arrays.toString(Vetores.copiarTrechoVetor(v, 15, 20)));
+        System.out.println(Arrays.toString(Vetores.lerInteiros(5)));
         Entrada.fechar();
     }
 }
