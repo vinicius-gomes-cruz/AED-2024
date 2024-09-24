@@ -9,7 +9,8 @@ import libs.Vetores;
 public class Aula {
     public static void aula(){
         Entrada.abrir();
-        System.out.println(Arrays.toString(Vetores.lerInteiros(5)));
+        String[] v = {"A","B","C","D","E","F","G","H","J"};
+        System.out.println(Arrays.toString(Vetores.obterIndices(v, "a")));
         Entrada.fechar();
     }
 }

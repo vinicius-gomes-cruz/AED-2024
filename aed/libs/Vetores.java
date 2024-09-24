@@ -188,4 +188,174 @@ public class Vetores {
         return vetor;
     }
 
+    public static int obterPosicaoInteiro(int[] vetor, int valor_buscar, int pos_inicial) {
+        int retorno = -1;
+
+        for (int i = pos_inicial; i < vetor.length; i++) {
+            if (vetor[i] == valor_buscar) {
+                retorno = i;
+                return retorno;
+            }
+        }
+
+
+        return retorno;
+    }
+
+    public static int obterPosicaoReal(double[] vetor, double valor_buscar, int pos_inicial) {
+        int retorno = -1;
+
+        for (int i = pos_inicial; i < vetor.length; i++) {
+            if (vetor[i] == valor_buscar) {
+                retorno = i;
+                return retorno;
+            }
+        }
+
+
+        return retorno;
+    }
+
+    public static int obterPosicaoLogico(boolean[] vetor, boolean valor_buscar, int pos_inicial) {
+        int retorno = -1;
+
+        for (int i = pos_inicial; i < vetor.length; i++) {
+            if (vetor[i] == valor_buscar) {
+                retorno = i;
+                return retorno;
+            }
+        }
+
+
+        return retorno;
+    }
+
+    public static int obterPosicaoCaracter(char[] vetor, char valor_buscar, int pos_inicial) {
+        int retorno = -1;
+
+        for (int i = pos_inicial; i < vetor.length; i++) {
+            if (vetor[i] == valor_buscar) {
+                retorno = i;
+                return retorno;
+            }
+        }
+
+
+        return retorno;
+    }
+
+    public static int obterPosicaoCadeiaDeCaracteres(String[] vetor, String valor_buscar, int pos_inicial) {
+        int retorno = -1;
+
+        for (int i = pos_inicial; i < vetor.length; i++) {
+            if (vetor[i] == valor_buscar) {
+                retorno = i;
+                return retorno;
+            }
+        }
+
+
+        return retorno;
+    }
+
+    public static int[] obterIndices(int[] v, int valor_buscar) {
+        int n = 0;
+        int l = 0;
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                n++;
+            }
+        }
+        int[] retorno = new int[n];
+
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                retorno[l] = i;
+                l++;
+            }
+        }
+
+        return retorno;
+    }
+
+    public static int[] obterIndices(double[] v, double valor_buscar) {
+        int n = 0;
+        int l = 0;
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                n++;
+            }
+        }
+        int[] retorno = new int[n];
+
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                retorno[l] = i;
+                l++;
+            }
+        }
+
+        return retorno;
+    }
+
+    public static int[] obterIndices(boolean[] v, boolean valor_buscar) {
+        int n = 0;
+        int l = 0;
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                n++;
+            }
+        }
+        int[] retorno = new int[n];
+
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                retorno[l] = i;
+                l++;
+            }
+        }
+
+        return retorno;
+    }
+
+    public static int[] obterIndices(String[] v, String valor_buscar) {
+        int n = 0;
+        int l = 0;
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                n++;
+            }
+        }
+        int[] retorno = new int[n];
+
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                retorno[l] = i;
+                l++;
+            }
+        }
+
+        return retorno;
+    }
+
+    public static int[] obterIndices(char[] v, char valor_buscar) {
+        int n = 0;
+        int l = 0;
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                n++;
+            }
+        }
+        int[] retorno = new int[n];
+
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == valor_buscar) {
+                retorno[l] = i;
+                l++;
+            }
+        }
+
+        return retorno;
+    }
+
 }
