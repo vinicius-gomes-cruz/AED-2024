@@ -24,6 +24,6 @@ public class Aula {
 //         // System.out.println(Matrizes.compararMatrizes(mA, mB));
 //         Entrada.fechar();
         System.out.println("Aula de Arquivos");
-        Arquivos.ex1();
+        Arquivos.ex02();
     }
 }
