@@ -395,4 +395,11 @@ public class Vetores {
 
         return v;
     }
+
+    public static int[] mostrarInt(int[] vetor) {
+        System.out.println("[");
+        for (int i = 0; i < vetor.length; i++) {
+            System.out.println(vetor[i]);
+        }
+    }
 }
