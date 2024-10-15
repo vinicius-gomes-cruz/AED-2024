@@ -68,11 +68,11 @@ public class Vetores {
         String[] vetor = new String[v.length];
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = v[i];
-        }   
+        }
         return vetor;
     }
 
-    public static int[] copiarTrechoVetor(int[] v, int a, int b){
+    public static int[] copiarTrechoVetor(int[] v, int a, int b) {
         if (a > b) {
             return new int[0];
         }
@@ -97,7 +97,8 @@ public class Vetores {
         }
         return vetor;
     }
-    public static double[] copiarTrechoVetor(double[] v, int a, int b){
+
+    public static double[] copiarTrechoVetor(double[] v, int a, int b) {
         if (a > b) {
             return new double[0];
         }
@@ -122,7 +123,8 @@ public class Vetores {
         }
         return vetor;
     }
-    public static boolean[] copiarTrechoVetor(boolean[] v, int a, int b){
+
+    public static boolean[] copiarTrechoVetor(boolean[] v, int a, int b) {
         if (a > b) {
             return new boolean[0];
         }
@@ -198,7 +200,6 @@ public class Vetores {
             }
         }
 
-
         return retorno;
     }
 
@@ -211,7 +212,6 @@ public class Vetores {
                 return retorno;
             }
         }
-
 
         return retorno;
     }
@@ -226,7 +226,6 @@ public class Vetores {
             }
         }
 
-
         return retorno;
     }
 
@@ -240,7 +239,6 @@ public class Vetores {
             }
         }
 
-
         return retorno;
     }
 
@@ -253,7 +251,6 @@ public class Vetores {
                 return retorno;
             }
         }
-
 
         return retorno;
     }
@@ -373,7 +370,7 @@ public class Vetores {
             }
             if (num == 1) {
                 qtdnum += 1;
-            } 
+            }
             num = 0;
         }
 
@@ -399,12 +396,12 @@ public class Vetores {
     public static void mostrarInt(int[] vetor) {
         System.out.print("[");
         for (int i = 0; i < vetor.length; i++) {
-            if (i == vetor.length -1) {
+            if (i == vetor.length - 1) {
                 System.out.print(vetor[i]);
             } else {
                 System.out.print(vetor[i] + ", ");
             }
-            
+
         }
         System.out.println("]");
     }
@@ -412,12 +409,12 @@ public class Vetores {
     public static void mostrarInt(boolean[] vetor) {
         System.out.print("[");
         for (int i = 0; i < vetor.length; i++) {
-            if (i == vetor.length -1) {
+            if (i == vetor.length - 1) {
                 System.out.print(vetor[i]);
             } else {
                 System.out.print(vetor[i] + ", ");
             }
-            
+
         }
         System.out.println("]");
     }
@@ -425,13 +422,42 @@ public class Vetores {
     public static void mostrarInt(double[] vetor) {
         System.out.print("[");
         for (int i = 0; i < vetor.length; i++) {
-            if (i == vetor.length -1) {
+            if (i == vetor.length - 1) {
                 System.out.print(vetor[i]);
             } else {
                 System.out.print(vetor[i] + ", ");
             }
-            
+
         }
         System.out.println("]");
+    }
+
+    public static int[] tirarRepeticoes(int[] vetor) {
+        int[] vetor2 = new int[0];
+        int numero = 0;
+        boolean repetido = false;
+        for (int i = 0; i < vetor.length; i++) {
+            numero = vetor[i];
+            for (int j = 0; j < vetor2.length; j++) {
+                if (vetor2[j] == numero) {
+                    repetido = true;
+                    continue;
+                }
+            }
+            if (repetido == false) {
+                int[] vetorsave = new int[vetor2.length];
+                for (int k = 0; k < vetor2.length; k++) {
+                    vetorsave[k] = vetor2[k];
+                }
+                vetor2 = new int[vetorsave.length + 1];
+                for (int k = 0; k < vetorsave.length; k++) {
+                    vetor2[k] = vetorsave[k];
+                }
+                vetor2[vetor2.length - 1] = numero;
+            }
+            repetido = false;
+
+        }
+        return vetor2;
     }
 }

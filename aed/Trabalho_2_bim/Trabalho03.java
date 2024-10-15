@@ -99,8 +99,6 @@ public class Trabalho03 {
         int[] vetor = new int[v1.length + v2.length];
         int[] vetor2 = new int[0];
         int j = 0;
-        int numero = 0;
-        boolean repetido = false;
         for (; j < v1.length; j++) {
             vetor[j] = v1[j];
         }
@@ -109,94 +107,68 @@ public class Trabalho03 {
             j++;
         }
 
-        for (int i = 0; i < vetor.length; i++) {
-            numero = vetor[i];
-            for (int k = 0; k < vetor.length; k++) {
-                if (vetor[k] == numero) {
+        vetor2 = Vetores.removerRepeticao(vetor);
+        return vetor2;
+    }
+
+    public static int[] ex08(int[] v1, int[] v2) {
+        int[] vetor1 = new int[0];
+        int[] vetor2 = new int[0];
+        int numero = 0;
+
+        for (int j = 0; j < v1.length; j++) {
+            numero = v1[j];
+            for (int i = 0; i < v2.length; i++) {
+                if (v1[j] == v2[i]) {
+                    int[] vetorsave = new int[vetor1.length];
+                    for (int k = 0; k < vetor1.length; k++) {
+                        vetorsave[k] = vetor1[k];
+                    }
+                    vetor1 = new int[vetorsave.length + 1];
+                    for (int k = 0; k < vetorsave.length; k++) {
+                        vetor1[k] = vetorsave[k];
+                    }
+                    vetor1[vetor1.length - 1] = numero;
+                }
+            }
+        }
+
+        vetor2 = Vetores.removerRepeticao(vetor1);
+
+        return vetor2;
+    }
+
+    public static int[] ex09(int[] v1, int[] v2) {
+        int[] vetor1 = new int[0];
+        int[] vetor2 = new int[0];
+        int numero = 0;
+        boolean repetido = false;
+
+        for (int j = 0; j < v1.length; j++) {
+            numero = v1[j];
+            for (int i = 0; i < v2.length; i++) {
+                if (v1[j] == v2[i]) {
                     repetido = true;
                     continue;
                 }
             }
-            if (repetido) {
-                repetido = false;
-                for (int k = 0; k < vetor2.length; k++) {
-                    if (vetor2[k] == numero) {
-                        repetido = true;
-                    }
+
+            if (repetido == false) {
+                int[] vetorsave = new int[vetor1.length];
+                for (int k = 0; k < vetor1.length; k++) {
+                    vetorsave[k] = vetor1[k];
                 }
-                if (repetido == false) {
-                    int[] vetorsave = new int[vetor2.length];
-                    for (int k = 0; k < vetor2.length; k++) {
-                        vetorsave[k] = vetor2[k];
-                    }
-                    vetor2 = new int[vetorsave.length + 1];
-                    for (int k = 0; k < vetorsave.length; k++) {
-                        vetor2[k] = vetorsave[k];
-                    }
-                    vetor2[vetor2.length - 1] = numero;
-                    repetido = false;
-                }
-            } else {
-                int[] vetorsave = new int[vetor2.length];
-                for (int k = 0; k < vetor2.length; k++) {
-                    vetorsave[k] = vetor2[k];
-                }
-                vetor2 = new int[vetorsave.length + 1];
+                vetor1 = new int[vetorsave.length + 1];
                 for (int k = 0; k < vetorsave.length; k++) {
-                    vetor2[k] = vetorsave[k];
+                    vetor1[k] = vetorsave[k];
                 }
-                vetor2[vetor2.length - 1] = numero;
-                repetido = false;
+                vetor1[vetor1.length - 1] = numero;
             }
+            repetido = false;
         }
+
+        vetor2 = Vetores.removerRepeticao(vetor1);
+
         return vetor2;
-    }
-
-    // public static int[] ex08(int[] v1, int[] v2) {
-
-    // }
-
-    public static int[] ex09(int[] v1, int[] v2) {
-        boolean repetiu = false;
-        int repetidos = 0;
-
-        for (int i = 0; i < v1.length; i++) {
-
-        }
-        for (int i = 0; i < v1.length; i++) {
-            for (int j = 0; j < v2.length; j++) {
-                if (v1[i] == v2[j]) {
-                    repetiu = true;
-                    continue;
-                }
-            }
-            if (repetiu == false) {
-                repetidos += 1;
-            }
-            repetiu = false;
-        }
-
-        int[] vetor = new int[v1.length - repetidos];
-        int l = 0;
-        repetiu = false;
-        for (int i = 0; i < v1.length; i++) {
-            for (int j = 0; j < v2.length; j++) {
-                if (v1[i] == v2[j]) {
-                    repetiu = true;
-                }
-            }
-            for (int j = 0; j < vetor.length; j++) {
-                if (vetor[j] == v1[i]) {
-                    repetiu = true;
-                }
-            }
-            if (repetiu == false) {
-                vetor[l] = v1[i];
-                l++;
-            }
-            repetiu = false;
-        }
-
-        return vetor;
     }
 }
