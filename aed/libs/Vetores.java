@@ -396,10 +396,42 @@ public class Vetores {
         return v;
     }
 
-    public static int[] mostrarInt(int[] vetor) {
-        System.out.println("[");
+    public static void mostrarInt(int[] vetor) {
+        System.out.print("[");
         for (int i = 0; i < vetor.length; i++) {
-            System.out.println(vetor[i]);
+            if (i == vetor.length -1) {
+                System.out.print(vetor[i]);
+            } else {
+                System.out.print(vetor[i] + ", ");
+            }
+            
         }
+        System.out.println("]");
+    }
+
+    public static void mostrarInt(boolean[] vetor) {
+        System.out.print("[");
+        for (int i = 0; i < vetor.length; i++) {
+            if (i == vetor.length -1) {
+                System.out.print(vetor[i]);
+            } else {
+                System.out.print(vetor[i] + ", ");
+            }
+            
+        }
+        System.out.println("]");
+    }
+
+    public static void mostrarInt(double[] vetor) {
+        System.out.print("[");
+        for (int i = 0; i < vetor.length; i++) {
+            if (i == vetor.length -1) {
+                System.out.print(vetor[i]);
+            } else {
+                System.out.print(vetor[i] + ", ");
+            }
+            
+        }
+        System.out.println("]");
     }
 }
