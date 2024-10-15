@@ -38,6 +38,11 @@ public class Aula {
         System.out.print("Exercicio 6:");
         Vetores.mostrarInt(Trabalho03.ex06(vetor0601, vetor0602));
 
+        int[]vetor0701 = {2,3,4,5,6,7,8,9};
+        int[]vetor0702 = {1,2,3,4,5,6,7,8,9};
+        System.out.print("Exercicio 7:");
+        Vetores.mostrarInt(Trabalho03.ex07(vetor0701, vetor0702));
+
         int[]vetor0901 = {10, 1, 7, 2, 3, 4, 5, 3, 6, 7};
         int[]vetor0902 = {5, 6, 7, 8, 9, 10};
         System.out.print("Exercicio 9:");

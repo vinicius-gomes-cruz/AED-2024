@@ -1,8 +1,10 @@
 package Trabalho_2_bim;
 
+import libs.Vetores;
 
 public class Trabalho03 {
-    public static void ex01(int[] vetor, char separador) {;
+    public static void ex01(int[] vetor, char separador) {
+        ;
         for (int i = 0; i < vetor.length; i++) {
             System.out.print(vetor[i]);
             if (i != vetor.length - 1) {
@@ -14,7 +16,7 @@ public class Trabalho03 {
 
     public static int[] ex02(int[] vetor, int valor) {
         int numeros = 0;
-    
+
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] > valor) {
                 numeros += 1;
@@ -22,7 +24,7 @@ public class Trabalho03 {
         }
 
         int[] v = new int[numeros];
-        
+
         int l = 0;
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] > valor) {
@@ -33,9 +35,10 @@ public class Trabalho03 {
 
         return v;
     }
+
     public static int[] ex03(int[] vetor, int valor) {
         int numeros = 0;
-    
+
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] < valor) {
                 numeros += 1;
@@ -43,7 +46,7 @@ public class Trabalho03 {
         }
 
         int[] v = new int[numeros];
-        
+
         int l = 0;
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] < valor) {
@@ -92,9 +95,62 @@ public class Trabalho03 {
         return vetor;
     }
 
-    // public static int[] ex07(int[] v1, int[] v2) {
-        
-    // }
+    public static int[] ex07(int[] v1, int[] v2) {
+        int[] vetor = new int[v1.length + v2.length];
+        int[] vetor2 = new int[0];
+        int j = 0;
+        int numero = 0;
+        boolean repetido = false;
+        for (; j < v1.length; j++) {
+            vetor[j] = v1[j];
+        }
+        for (int i = 0; i < v2.length; i++) {
+            vetor[j] = v2[i];
+            j++;
+        }
+
+        for (int i = 0; i < vetor.length; i++) {
+            numero = vetor[i];
+            for (int k = 0; k < vetor.length; k++) {
+                if (vetor[k] == numero) {
+                    repetido = true;
+                    continue;
+                }
+            }
+            if (repetido) {
+                repetido = false;
+                for (int k = 0; k < vetor2.length; k++) {
+                    if (vetor2[k] == numero) {
+                        repetido = true;
+                    }
+                }
+                if (repetido == false) {
+                    int[] vetorsave = new int[vetor2.length];
+                    for (int k = 0; k < vetor2.length; k++) {
+                        vetorsave[k] = vetor2[k];
+                    }
+                    vetor2 = new int[vetorsave.length + 1];
+                    for (int k = 0; k < vetorsave.length; k++) {
+                        vetor2[k] = vetorsave[k];
+                    }
+                    vetor2[vetor2.length - 1] = numero;
+                    repetido = false;
+                }
+            } else {
+                int[] vetorsave = new int[vetor2.length];
+                for (int k = 0; k < vetor2.length; k++) {
+                    vetorsave[k] = vetor2[k];
+                }
+                vetor2 = new int[vetorsave.length + 1];
+                for (int k = 0; k < vetorsave.length; k++) {
+                    vetor2[k] = vetorsave[k];
+                }
+                vetor2[vetor2.length - 1] = numero;
+                repetido = false;
+            }
+        }
+        return vetor2;
+    }
 
     // public static int[] ex08(int[] v1, int[] v2) {
 
@@ -105,7 +161,7 @@ public class Trabalho03 {
         int repetidos = 0;
 
         for (int i = 0; i < v1.length; i++) {
-            
+
         }
         for (int i = 0; i < v1.length; i++) {
             for (int j = 0; j < v2.length; j++) {
