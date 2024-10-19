@@ -1,8 +1,8 @@
-package Trabalho_2_bim;
+package trabalhos;
 
 import libs.Vetores;
 
-public class Trabalho03 {
+public class T3 {
     public static void ex01(int[] vetor, char separador) {
         ;
         for (int i = 0; i < vetor.length; i++) {
@@ -170,5 +170,70 @@ public class Trabalho03 {
         vetor2 = Vetores.removerRepeticao(vetor1);
 
         return vetor2;
+    }
+
+    public static int[][] ex10(int n) {
+        int[][] matriz = new int[n][n];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (i < j) {
+                    matriz[i][j] = 0;
+                } else {
+                    if (i == 0 || j == 0) {
+                        matriz[i][j] = 1;
+                    } else {
+                        matriz[i][j] = matriz[i-1][j] + matriz[i-1][j-1];
+                    }
+                }
+            }
+            
+        }
+        return matriz;
+    }
+
+    public static int[][] ex11(int[][]matriz){
+        int[][] matriz2 = new int[matriz[0].length][matriz.length];
+
+
+
+        for (int i = 0; i < matriz2.length; i++) {
+            for (int j = 0; j < matriz2[i].length; j++) {
+                matriz2[i][j] = matriz[j][i];
+            }
+        }
+        return matriz2;
+    }
+
+    public static int[][] ex12(int[][] matriz, int l1, int l2) {
+        int[][] matriz2 = new int[matriz.length][matriz[0].length];
+
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if (i == l1) {
+                    matriz2[i] = matriz[l2];
+                } else if (i == l2) {
+                    matriz2[i] = matriz[l1];
+                } else {
+                    matriz2[i] = matriz[i];
+                }
+            }
+        }
+        
+        return matriz2;
+    }
+
+    public static int[][] ex13(int[][] matriz, int[][] matriz2) {
+        if (matriz[0].length != matriz2.length) {
+            return new int[0][0];
+        }
+        int[][] matrizMult = new int[matriz.length][matriz2[0].length];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz2[0].length; j++) {
+                for (int j2 = 0; j2 < matriz[0].length; j2++) {
+                    matrizMult[i][j] += matriz[i][j2] * matriz2[j2][j];
+                }
+            }
+        }
+        return matrizMult;
     }
 }
