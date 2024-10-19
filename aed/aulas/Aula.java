@@ -55,13 +55,11 @@ public class Aula {
 
         int[][] matriz11 = {{1,7,8},{5,3,2}};
         System.out.println("Exercicio 11:");
-
         for (int i = 0; i < matriz11[0].length; i++) {
             Vetores.mostrarInt(T3.ex11(matriz11)[i]);
         }
 
         int[][] matriz12 = {{1,2,3,4},{5,6,7,8},{9,10,11,12}};
-        
         System.out.println("Exercicio 12:");
         for (int i = 0; i < matriz12.length; i++) {
             Vetores.mostrarInt(T3.ex12(matriz12, 0,2)[i]);
