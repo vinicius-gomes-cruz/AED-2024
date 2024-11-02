@@ -494,7 +494,7 @@ public class Vetores {
         fim = v.length;
 
         while (ini <= fim) {
-            meio = (int) (ini + fim) / 2;
+            meio = (ini + fim) / 2;
             if (v[meio] == x) {
                 return meio;
             } else {
@@ -506,7 +506,7 @@ public class Vetores {
             }
         }
 
-        return -1;
+        return 0;
     }
 
     public static int[] gerarValoresAleatoriosOrdenado(int n, int valor_min, int valor_max) {
