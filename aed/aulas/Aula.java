@@ -7,6 +7,6 @@ import libs.Lista;
 
 public class Aula {
     public static void aula(){
-        Lista.hashSet();
+        Lista.vetorEsparso();
     }
 }
