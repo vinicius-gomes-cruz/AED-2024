@@ -520,13 +520,13 @@ public class Vetores {
         return vetor;
     }
 
-    public static void bubbleSort(int[] v){
+    public static void bubbleSort(int[] v) {
         int i, j, n;
         n = v.length;
-        for(i=0;i<n;i++){ //percorre de 0 até n-1 (n-1 vezes)
-            for(j=1;j<n-i;j++){ //percorre de 1 até n-i
-                if(v[j]<v[j-1]){ //verifica se o elem. em j é menor que o elem. em j-1
-                    troca(v, j, j-1); //caso seja menor, troca os elementos
+        for (i = 0; i < n; i++) { // percorre de 0 até n-1 (n-1 vezes)
+            for (j = 1; j < n - i; j++) { // percorre de 1 até n-i
+                if (v[j] < v[j - 1]) { // verifica se o elem. em j é menor que o elem. em j-1
+                    troca(v, j, j - 1); // caso seja menor, troca os elementos
                 }
             }
         }
@@ -538,30 +538,31 @@ public class Vetores {
         v[j] = temp;
     }
 
-    public static void insertionSort(int[] v){
-        int i,j;
-        for(j=1;j<v.length;j++){
-            i=j;
-            while(i>0 && v[i] < v[i-1]){
-                troca(v, i, i-1);
+    public static void insertionSort(int[] v) {
+        int i, j;
+        for (j = 1; j < v.length; j++) {
+            i = j;
+            while (i > 0 && v[i] < v[i - 1]) {
+                troca(v, i, i - 1);
                 i--;
             }
         }
     }
-    public static void selectionSort(int[] v){
+
+    public static void selectionSort(int[] v) {
         int i, j, menor_val, menor_pos;
-    
-        for(i=0;i<v.length-1;i++){
-            //procura pelo menor valor
+
+        for (i = 0; i < v.length - 1; i++) {
+            // procura pelo menor valor
             menor_val = v[i];
             menor_pos = i;
-            for(j=i+1;j<v.length;j++){
-                if(v[j]<menor_val){
+            for (j = i + 1; j < v.length; j++) {
+                if (v[j] < menor_val) {
                     menor_val = v[j];
                     menor_pos = j;
                 }
             }
-            //troca o elemento em i pelo menor valor
+            // troca o elemento em i pelo menor valor
             troca(v, i, menor_pos);
         }
     }
@@ -662,31 +663,86 @@ public class Vetores {
         v[j] = temp;
     }
 
-    public static void countingSort(int[] v){
+    public static int[] countingSort2(int[] array) {
+
+        int max = array[0];
+        int min = array[0];
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+
+        int range = max - min + 1;
+        int[] count = new int[range];
+
+        for (int i = 0; i < array.length; i++) {
+            count[array[i] - min]++;
+        }
+
+        int[] sortedArray = new int[array.length];
+        int index = 0;
+
+        for (int i = 0; i < count.length; i++) {
+            while (count[i] > 0) {
+                sortedArray[index++] = i + min;
+                count[i]--;
+            }
+        }
+
+        return sortedArray;
+    }
+
+    public static int[] countingSort(int[] v, int k) {
         int[] cont = new int[10];
         int[] contador_acumulado = new int[10];
         int[] resultado = new int[v.length];
-        int x = 0;
+        int x = 0, p = 0;
 
-        for (int i = 0; i < v.length; i++) {
-            cont[v[i]] += 1;
+        for (int i = 0; i < resultado.length; i++) {
+            p = obterDigito(v[i], k);
+            cont[p]++;
         }
 
         for (int i = 1; i < cont.length; i++) {
-            contador_acumulado[i] = cont[i-1] + contador_acumulado[i - 1];
+            contador_acumulado[i] = cont[i - 1] + contador_acumulado[i - 1];
         }
 
         for (int i = 0; i < v.length; i++) {
-            resultado[contador_acumulado[v[i]]++] = v[i];
+            p = obterDigito(v[i], k);
+            resultado[contador_acumulado[p]++] = v[i];
         }
 
-        System.out.println(obterDigito(129, 3));
-
-        mostrarInt(resultado);
+        return resultado;
 
     }
 
+    public static int[] radixSort(int[] v) {
+        int cont = 0;
+
+        while (verificaOrdenado(v) == false) {
+            v = countingSort(v, ++cont);
+        }
+        ;
+
+        return v;
+
+    }
+
+    public static boolean verificaOrdenado(int[] v) {
+        for (int i = 0; i < v.length - 1; i++) {
+            if (v[i] > v[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static int obterDigito(int x, int k) {
-        return ((x % (int) Math.pow(10,k)) / (int) Math.pow(10, k - 1)) % 10;
+        return ((x % (int) Math.pow(10, k)) / (int) Math.pow(10, k - 1)) % 10;
     }
 }

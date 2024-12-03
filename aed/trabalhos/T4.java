@@ -44,6 +44,9 @@ public class T4 {
             double tempo_quick_sort = tempo_de_execucao_quick_sort(vetor_copia);
             tabela_algoritmo_tempo.put("Quick sort", tempo_quick_sort);
 
+            System.out.println("Calculando counting sort...");
+            vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
+
             tabela_tamanhos_vetores.put(tamanho, tabela_algoritmo_tempo);
             System.out.println();
         }
@@ -85,6 +88,11 @@ public class T4 {
     public static double tempo_de_execucao_quick_sort(int[] v) {
         long tempo_inicio = Tempo.medirTempoIniciar();
         Vetores.quickSort(v, 0, v.length);
+        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
+    }
+
+    public static double tempo_de_execucao_counting_sort(int[] v) {
+        long tempo_inicio = Tempo.medirTempoIniciar();
         return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
     }
 
