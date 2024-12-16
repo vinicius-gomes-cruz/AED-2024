@@ -1,118 +1,128 @@
 package trabalhos;
 
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import libs.Tempo;
 import libs.Vetores;
 
 public class T4 {
     public static void executar() {
-        int[] tamanhos_vetor = { (int) 1e3, (int) 1e4, (int) 1e5, (int) 1e6 };
-        Hashtable<Integer, Hashtable<String, Double>> tabela_tamanhos_vetores = new Hashtable<>();
+        int[] tamanhosVetor = { (int) 1e2, (int) 1e4,};
+        Map<Integer, Map<String, Double>> resultados = new LinkedHashMap<>();
 
-        for (int i = 0; i < tamanhos_vetor.length; i++) {
-            int tamanho = tamanhos_vetor[i];
-            int[] vetor_aleatorio = obter_vetor(tamanho);
-            int[] vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-            Hashtable<String, Double> tabela_algoritmo_tempo = new Hashtable<>();
-
+        for (int tamanho : tamanhosVetor) {
             System.out.println("Tamanho: " + tamanho);
-            if (tamanho < 1e6) {
-                System.out.println("Calculando bubble sort...");
-                double tempo_bubble_sort = tempo_de_execucao_bubble_sort(vetor_copia);
-                vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-                tabela_algoritmo_tempo.put("Bubble sort", tempo_bubble_sort);
+            int[] vetorOriginal = obterVetor(tamanho);
 
-                System.out.println("Calculando insertion sort...");
-                double tempo_insertion_sort = tempo_de_execucao_insertion_sort(vetor_copia);
-                vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-                tabela_algoritmo_tempo.put("Insertion sort", tempo_insertion_sort);
+            Map<String, Double> tempos = new LinkedHashMap<>();
 
-                System.out.println("Calculando selection sort...");
-                vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-                double tempo_selection_sort = tempo_de_execucao_selection_sort(vetor_copia);
-                tabela_algoritmo_tempo.put("Selection sort", tempo_selection_sort);
+            if (tamanho < 1e8) {
+                medirETempo("Bubble sort", tempos, vetorOriginal, Vetores::bubbleSort);
+                medirETempo("Insertion sort", tempos, vetorOriginal, Vetores::insertionSort);
+                medirETempo("Selection sort", tempos, vetorOriginal, Vetores::selectionSort);
             }
 
-            System.out.println("Calculando merge sort...");
-            vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-            double tempo_merge_sort = tempo_de_execucao_merge_sort(vetor_copia);
-            tabela_algoritmo_tempo.put("Merge sort", tempo_merge_sort);
+            medirETempo("Merge sort", tempos, vetorOriginal, Vetores::mergeSort);
+            medirETempo("Quick sort", tempos, vetorOriginal, v -> Vetores.quickSort(v, 0, v.length));
+            medirETempo("Counting sort", tempos, vetorOriginal, T4::countingSort);
+            medirETempo("Radix sort", tempos, vetorOriginal, T4::radixSort);
 
-            System.out.println("Calculando quick sort...");
-            vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-            double tempo_quick_sort = tempo_de_execucao_quick_sort(vetor_copia);
-            tabela_algoritmo_tempo.put("Quick sort", tempo_quick_sort);
-
-            System.out.println("Calculando counting sort...");
-            vetor_copia = Vetores.copiarInteiros(vetor_aleatorio);
-
-            tabela_tamanhos_vetores.put(tamanho, tabela_algoritmo_tempo);
+            resultados.put(tamanho, tempos);
             System.out.println();
         }
 
-        System.out.println();
-        exibir_dados(tamanhos_vetor, tabela_tamanhos_vetores);
-
+        exibirResultados(tamanhosVetor, resultados);
     }
 
-    public static int[] obter_vetor(int tamanho) {
-        int[] vetor_aleatorio = Vetores.gerarValoresAleatorios(tamanho, 0, 1000000);
-        return vetor_aleatorio;
+    private static int[] obterVetor(int tamanho) {
+        return Vetores.gerarValoresAleatorios(tamanho, 0, 1000000);
     }
 
-    public static double tempo_de_execucao_bubble_sort(int[] v) {
-        long tempo_inicio = Tempo.medirTempoIniciar();
-        Vetores.bubbleSort(v);
-        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
+    private static void medirETempo(String nome, Map<String, Double> tempos, int[] vetorOriginal, Algoritmo algoritmo) {
+        int[] copiaVetor = Vetores.copiarInteiros(vetorOriginal);
+        System.out.println("Calculando " + nome + "...");
+        long inicio = Tempo.medirTempoIniciar();
+        algoritmo.executar(copiaVetor);
+        double tempo = Tempo.medirTempoFinalizarSegundos(inicio);
+        tempos.put(nome, tempo);
     }
 
-    public static double tempo_de_execucao_insertion_sort(int[] v) {
-        long tempo_inicio = Tempo.medirTempoIniciar();
-        Vetores.insertionSort(v);
-        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
+    public static void countingSort(int[] v) {
+        int max = encontrarMax(v);
+        int[] count = new int[max + 1];
+        int[] output = new int[v.length];
+
+        for (int num : v) {
+            count[num]++;
+        }
+
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = v.length - 1; i >= 0; i--) {
+            output[--count[v[i]]] = v[i];
+        }
+
+        System.arraycopy(output, 0, v, 0, v.length);
     }
 
-    public static double tempo_de_execucao_selection_sort(int[] v) {
-        long tempo_inicio = Tempo.medirTempoIniciar();
-        Vetores.selectionSort(v);
-        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
+    public static void radixSort(int[] v) {
+        int max = encontrarMax(v);
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSortForRadix(v, exp);
+        }
     }
 
-    public static double tempo_de_execucao_merge_sort(int[] v) {
-        long tempo_inicio = Tempo.medirTempoIniciar();
-        Vetores.mergeSort(v);
-        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
+    private static void countingSortForRadix(int[] v, int exp) {
+        int[] count = new int[10];
+        int[] output = new int[v.length];
+
+        for (int num : v) {
+            count[(num / exp) % 10]++;
+        }
+
+        for (int i = 1; i < count.length; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = v.length - 1; i >= 0; i--) {
+            output[--count[(v[i] / exp) % 10]] = v[i];
+        }
+
+        System.arraycopy(output, 0, v, 0, v.length);
     }
 
-    public static double tempo_de_execucao_quick_sort(int[] v) {
-        long tempo_inicio = Tempo.medirTempoIniciar();
-        Vetores.quickSort(v, 0, v.length);
-        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
+    private static int encontrarMax(int[] v) {
+        int max = v[0];
+        for (int num : v) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
     }
 
-    public static double tempo_de_execucao_counting_sort(int[] v) {
-        long tempo_inicio = Tempo.medirTempoIniciar();
-        return Tempo.medirTempoFinalizarSegundos(tempo_inicio);
-    }
+    private static void exibirResultados(int[] tamanhosVetor, Map<Integer, Map<String, Double>> resultados) {
+        for (int tamanho : tamanhosVetor) {
+            System.out.printf("Resultados para tamanho %d:\n", tamanho);
 
-    public static void exibir_dados(int[] tamanhos_vetor, Hashtable<Integer, Hashtable<String, Double>> resultados) {
-        for (int i = 0; i < tamanhos_vetor.length; i++) {
-            int tamanho = tamanhos_vetor[i];
-            System.out.printf("Com tamanho %d:\n", tamanho);
-
-            Hashtable<String, Double> objeto = resultados.get(tamanho);
-
+            Map<String, Double> tempos = resultados.get(tamanho);
             System.out.printf("%-14s| Tempo(s)\n", "Algoritmo");
-            System.out.println("-------------------------");
+            System.out.println("");
 
-            for (String alg : objeto.keySet()) {
-                System.out.printf("%-14s: %f\n", alg, objeto.get(alg));
+            for (Map.Entry<String, Double> entrada : tempos.entrySet()) {
+                System.out.printf("%-14s: %f\n", entrada.getKey(), entrada.getValue());
             }
 
-            System.out.println("----------------------------------------------");
+            System.out.println("");
             System.out.println();
         }
-        ;
+    }
+
+    @FunctionalInterface
+    interface Algoritmo {
+        void executar(int[] v);
     }
 }

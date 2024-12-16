@@ -9,7 +9,6 @@ import trabalhos.T4;
 
 public class Aula {
     public static void aula(){
-        int[] v = {3,6,2,4,8,1,6,3,5,3};
-        Vetores.mostrarInt(Vetores.countingSort2(v));
+        T4.executar();
     }
 }
